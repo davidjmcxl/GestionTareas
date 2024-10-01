@@ -1,0 +1,26 @@
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.content {
+  padding: 16px;
+}
+
+@media (max-width: 768px) {
+  .sidenav {
+    width: 150px;
+  }
+
+  .mat-toolbar.mat-primary {
+    background: #3f51b5;
+  }
+
+  .content {
+    padding: 8px;
+  }
+}

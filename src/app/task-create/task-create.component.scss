@@ -1,0 +1,30 @@
+.full-width {
+  width: 100%;
+}
+.card-title-custom{
+  font-size: 24px;
+  font-weight: 500;
+  color: #010377;
+  margin: 14px;
+}
+.name-field {
+  width: 60%; // Ajusta este valor según tu preferencia
+  margin-left: auto; // Centra el input de edad
+}
+.age-field {
+  width: 35%; // Ajusta este valor según tu preferencia
+  margin-left: 10px; // Centra el input de edad
+}
+
+.skill-field {
+  width: 70%; // Habilidad ocupa el 100%
+}
+
+.skill-group {
+  display: flex;
+  align-items: center; // Alinear los botones y inputs verticalmente
+}
+
+button.mat-icon-button {
+  margin-left: 8px; // Espacio entre el input y el botón
+}

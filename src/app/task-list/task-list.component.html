@@ -1,0 +1,50 @@
+<!-- src/app/task-list/task-list.component.html -->
+<div class="task-list-container">
+  <h2>Lista de Tareas</h2>
+
+  <!-- Filtro de tareas -->
+  <mat-form-field appearance="fill" class="filter-field">
+    <mat-label>Filtrar Tareas</mat-label>
+    <mat-select [(value)]="filterValue" (selectionChange)="onFilterChange($event.value)">
+      <mat-option value="all">Todas</mat-option>
+      <mat-option value="completed">Completadas</mat-option>
+      <mat-option value="pending">Pendientes</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="task-cards-container">
+    <mat-card *ngFor="let task of filteredTasks" class="task-card">
+      <mat-card-header>
+        <mat-card-title><strong>Tarea:</strong> {{ task.taskName }}</mat-card-title>
+        <mat-card-subtitle><strong>Fecha de vencimiento:</strong> {{ task.dueDate | date: 'MMM d, y' }}</mat-card-subtitle>
+
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Personas Asociadas:</strong></p>
+        <div *ngFor="let person of task.people" class="person-info">
+          <p><strong>Nombre:</strong> {{ person.fullName }} <br>
+          <strong>Edad:</strong> {{ person.age }}</p>
+          <p><strong>Habilidad:</strong>
+            <span *ngFor="let skill of person.skills; let i = index">
+              {{ skill.name }}<span *ngIf="i < person.skills.length - 1">, </span>
+            </span>
+          </p>
+        </div>
+        <mat-card-subtitle>
+          <span *ngIf="task.completed" class="completed-status">
+            <mat-icon class="status-icon">check_circle</mat-icon>
+            <strong>Estado:</strong> Completada
+          </span>
+          <span *ngIf="!task.completed" class="pending-status">
+
+            <strong>Estado:</strong> Pendiente
+          </span>
+        </mat-card-subtitle>
+        <button mat-button color="primary" *ngIf="!task.completed" (click)="toggleTaskCompletion(task)">
+          Marcar como Completada
+        </button>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

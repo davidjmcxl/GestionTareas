@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pruebaTecnicaTareas';
+  isMobile = false;
+
+  ngOnInit(): void {
+    this.checkScreenWidth();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenWidth();
+  }
+
+  checkScreenWidth(): void {
+    this.isMobile = window.innerWidth < 768;
+  }
+
+  onSidenavToggle(opened: boolean): void {
+    if (!opened && this.isMobile) {
+      // Cierra el menú en dispositivos móviles después de seleccionar una opción
+    }
+  }
 }
